@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true" class="ion-padding quiz-page">
+  <div class="overlay">
   <div class="container">
     <h2>{{question.text}}</h2>
     <ion-list>
@@ -11,7 +12,8 @@
     </ion-list>
 
     <p *ngIf="feedback" [ngClass]="{'correct':isCorrect,'incorrect':!isCorrect}">{{feedback}}</p>
-    <ion-button expand="full" color="primary" *ngIf="!isCorrect&&!Disable" (click)="submitAnswer()" [disabled]="!selectedAnswer">{{Submit}}</ion-button>
-    <ion-button expand="full" color="secondary" *ngIf="isCorrect&&!Disable" (click)="goToNextPage()">{{Next}}</ion-button>
+    <ion-button expand="full" class="custom-button" *ngIf="!isCorrect&&!Disable" (click)="submitAnswer()" [disabled]="!selectedAnswer">{{Submit}}</ion-button>
+    <ion-button expand="full" class="custom-button secondary" *ngIf="isCorrect&&!Disable" (click)="goToNextPage()">{{Next}}</ion-button>
   </div>
+</div>
 </ion-content>

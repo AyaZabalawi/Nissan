@@ -35,3 +35,26 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+.custom-button{
+  --background: transparent !important;
+  background: transparent !important;
+  color: var(--ion-color-contrast);
+  border: 1px solid #fff;
+  color: #fff !important;
+  border-radius: 5px;
+  min-height: 45px !important;
+  &.secondary{
+    background: rgba(255,255,255,.07);
+  }
+  button{
+    --background: transparent !important;
+    background: transparent !important;
+  }
+}
+ion-radio {
+  --border-color: #fff; /* Change the border color */
+  --background: #fff; /* Background color */
+  --color: #fff; /* Icon color */
+  --color-checked: #fff;
+}
+

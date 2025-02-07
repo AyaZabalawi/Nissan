@@ -1,6 +1,8 @@
 <ion-content [fullscreen]="true" class="ion-padding video-page">
-  <div class="container">
-    <video #videoPlayer controls [src]="videoSource" class="video-player"></video>
-    <ion-button expand="full" color="primary" (click)="goToNextPage()">{{Next}}</ion-button>
+  <div class="overlay">
+    <div class="container">
+      <video #videoPlayer muted controls [src]="videoSource" class="video-player"></video>
+      <ion-button expand="full" class="custom-button" (click)="goToNextPage()">{{Next}}</ion-button>
+    </div>
   </div>
 </ion-content>
