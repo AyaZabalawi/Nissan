@@ -1,8 +1,18 @@
 <ion-content [fullscreen]="true" class="ion-padding video-page">
-  <div class="overlay">
-    <div class="container">
-      <video #videoPlayer muted controls [src]="videoSource" class="video-player"></video>
+  <div class="overlay"></div>
+  <div class="container">
+    <img class="logo" src="assets/images/nisan-logo-white.svg" alt="">
+    <div class="content">
+      <h1>Customer Safety</h1>
+      <div class="video-container">
+        <video #videoPlayer muted controls class="video-player">
+          <source [src]="videoSource" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        <button></button>
+      </div>
       <ion-button expand="full" class="custom-button" (click)="goToNextPage()">{{Next}}</ion-button>
     </div>
   </div>
+
 </ion-content>

@@ -1,7 +1,11 @@
 <ion-content [fullscreen]="true" class="welcome-page">
-  <div class="overlay">
-    <h1>{{Heading}}</h1>
-    <p>{{BodyText}}</p>
-    <ion-button expand="full" class="custom-button" (click)="goToNextPage()">{{Next}}</ion-button>
+  <div class="overlay"></div>
+  <div class="container">
+    <img class="logo" src="assets/images/nisan-logo-white.svg" alt="">
+    <div class="content">
+      <h1>{{Heading}}</h1>
+      <p>{{BodyText}}</p>
+      <ion-button expand="full" class="custom-button" (click)="goToNextPage()">{{Next}}</ion-button>
+    </div>
   </div>
 </ion-content>

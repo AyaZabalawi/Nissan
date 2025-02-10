@@ -1,5 +1,5 @@
 .video-page {
-  --background: url('/assets/images/background.png') no-repeat center top / cover;
+  --background: url('/assets/images/background.png') no-repeat center bottom / cover;
     max-width: 100%;
     margin: 0 auto;
     display: block;
@@ -9,24 +9,93 @@
       align-items: center;
       justify-content: center;
       height: 100%;
+      width: 100%;
       text-align: center;
       color: white;
-      background:linear-gradient(0deg, black, #b6171700);
+      background:rgba(0, 0, 0, .35);
       padding: 20px;
       position: absolute;
-      width: 100%;
+      left: 0;
       top: 0;
+    }
+    .logo{
+      width: auto;
+      height: 150px;
     }
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      height: 96vh;
       text-align: center;
-      height: 100%;
-      gap: 5px;
-      video{
-        width: 65%;
+      position: relative;
+      width: 100%;
+      z-index: 1;
+      padding-top: 5%;
+      gap: 8%;
+      .video-container{
+        position: relative;
+        button{
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 50%;
+          margin: auto;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          border-radius: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(3, 169, 244, .75);
+          z-index: 1;
+          &::before{
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 14px solid #fff;
+            border-radius: 2px;
+            left: 0;
+            right: 0;
+            position: relative;
+            margin: auto;
+          }
+        }
       }
+      video{
+        width: 100%;
+        position: relative;
+      }
+    }
+    .content{
+      color: #fff;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-top: 8px;
+      margin-bottom: 1.5rem;
+    }
+    ion-button {
+      position: fixed;
+      bottom: -5px;
+      right: 0;
+      background: #fff !important;
+      color: #000 !important;
+      border-radius: 0;
+      height: 48px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .video-page .video-container{
+      width: 50%;
+      margin: auto;
+    }
+  }
+  [dir='rtl']{
+    .custom-button{
+      right: initial !important;
+      left: 0;
     }
   }

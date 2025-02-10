@@ -24,8 +24,8 @@ export class Quiz2Page implements OnInit {
   arabicChoices = ['ملصق تعريف القطعة','الجودة','التغليف','لا شيء مما سبق'];
   englishQuestion = 'The 4 most important reasons to always use Nissane genuine parts are Safety, Quality, Longevity, and ______ ?:';
   englishChoices = ['Price', 'Reliability', 'Packaging', 'Look & Feel']
-  
-  choices = 
+
+  choices =
   [
     {text:'',value:'1'},
     {text:'',value:'2'},

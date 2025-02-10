@@ -35,14 +35,34 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+@font-face {
+  font-family: NissanBrandRegular;
+  src: url(assets/Fonts/Nissan\ Brand\ Regular.otf);
+}
+@font-face {
+  font-family: NissanBrandLight;
+  src: url(assets/Fonts/Nissan\ Brand\ Light.otf);
+}
+@font-face {
+  font-family: ARNissanBrandRegular;
+  src: url(assets/Fonts/GEDinkum-Regular.otf);
+}
+html.md, html {
+  --ion-default-font: NissanBrandLight, sans-serif;
+}
+// html.md[dir='rtl'], html[dir='rtl']{
+//   --ion-default-font: ARNissanBrandRegular, sans-serif !important;
+// }
 .custom-button{
   --background: transparent !important;
   background: transparent !important;
   color: var(--ion-color-contrast);
   border: 1px solid #fff;
   color: #fff !important;
-  border-radius: 5px;
-  min-height: 45px !important;
+  border-radius: 12px;
+  width: 225px;
+  font-size: 25px;
+  text-transform: capitalize;
   &.secondary{
     background: rgba(255,255,255,.07);
   }
@@ -51,10 +71,131 @@
     background: transparent !important;
   }
 }
+.language-selection .custom-button{
+  height: 75px;
+}
+ion-list, ion-item, ion-radio-group{
+  --background: transparent !important;
+  background: transparent !important;
+}
 ion-radio {
   --border-color: #fff; /* Change the border color */
   --background: #fff; /* Background color */
   --color: #fff; /* Icon color */
   --color-checked: #fff;
 }
+ion-item{
+  --border-width: 0;
+  --inner-border-width: 0 0 0 0 !important;
+}
+.ion-activatable.correct{
+  --background: rgba(76, 175, 80, .18) !important;
+  border: 1px solid #43A047;
+  border-radius: 8px;
+  .radio-checked{
+    --color-checked: #43A047 !important;
+}
+  }
+.ion-activatable.correct ion-label{
+  color: #43A047 !important;
+}
 
+.ion-activatable.incorrect{
+  --background: rgba(195, 0, 47, .18) !important;
+  border: 1px solid #c3002f;
+  border-radius: 8px;
+  .radio-checked{
+    --color-checked: #c3002f !important;
+  }
+  }
+.ion-activatable.incorrect ion-label{
+  color: #c3002f !important;
+}
+@media (min-width: 1200px) {
+  ion-item{
+    width: 50%;
+  }
+}
+::ng-deep .native-wrapper .radio-icon {
+  width: .8rem;
+  height: .8rem;
+  .radio-inner{
+    width: .4rem;
+    height: .4rem;
+  }
+}
+@media (min-width: 1999px) {
+  .logo{
+    width: 10% !important;
+    height: auto !important;
+  }
+  .custom-button{
+    font-size: 3.5rem !important;
+    width: 22% !important;
+  }
+  .language-selection .custom-button{
+    height: 120px !important;
+  }
+  .welcome-page p,  .welcome-page h1{
+    width: 41%;
+  }
+  .welcome-page p, .final-page p, .retry-page p{
+    font-size: 3rem !important;
+  }
+  .welcome-page h1, .final-page h1, .retry-page h1{
+    font-size: 4.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+  .video-page h1, ion-content .container h1{
+    font-size: 4rem !important;
+  }
+  .welcome-page ion-button, .video-page ion-button, .quiz-page .custom-button{
+    height: 100px !important;
+    width: 15% !important;
+  }
+  .video-page .video-container{
+    width: 100% !important;
+  }
+  .video-page .container .video-container button{
+    width: 100px !important;
+    height: 100px !important;
+    &::before{
+      border-top: 22px solid transparent !important;
+    border-bottom: 22px solid transparent !important;
+    border-left: 28px solid #fff !important;
+    }
+  }
+  ion-content .container ion-label{
+    font-size: 3rem !important;
+  }
+  ion-content .container ion-list{
+    margin-bottom: 25px !important;
+  }
+  .quiz-page h1 {
+    width: 38% !important;
+  }
+  .lock-overlay, .lock{
+    height: 300px !important;
+  }
+  .final-page p, .retry-page p{
+    margin-bottom: 1.5rem !important;
+  }
+  [dir='rtl']{
+    .welcome-page p, .welcome-page h1{
+      width: 55% !important;
+    }
+    .custom-button{
+      right: initial !important;
+      left: 0;
+    }
+    .final-page p, .final-page h1{
+      width: 100%;
+    }
+    .final-page p{
+      font-size: 4.5rem !important;
+    }
+    .final-page h1{
+      font-size: 6.4rem !important;
+    }
+  }
+}

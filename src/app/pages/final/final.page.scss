@@ -1,29 +1,62 @@
 .final-page {
-  --background: url('/assets/images/background.png') no-repeat center top / cover;
-  .overlay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    color: white;
-    background:rgba(255, 255, 255, .16);
-    padding: 20px;
+  --background: url('/assets/images/background.png') no-repeat center bottom / cover;
+  text-align: center;
+  .logo{
+    width: auto;
+    height: 150px;
   }
+  .lock{
+    margin: 15px 0;
+    height: 130px;
+    filter: grayscale(1);
+    cursor: pointer;
+}
+.lock-overlay{
+  filter: hue-rotate(124deg) saturate(1);
+  position: absolute;
+  z-index: 1;
+  opacity: .5;
+  margin: 15px auto;
+  height: 130px;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+}
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 96vh;
+      text-align: center;
+      position: relative;
+      width: 100%;
+      z-index: 1;
+      padding-top: 5%;
+      gap: 8%
+    }
+    .content{
+      color: #fff;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-top: 8px;
+      margin-bottom: 1.5rem;
+    }
 
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      margin: auto;
+    }
 
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-
-  ion-button {
-    width: 200px;
+  // ion-button {
+  //   width: 200px;
+  // }
+}
+@media (min-width: 1200px) {
+  .final-page p, .final-page h1{
+    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
