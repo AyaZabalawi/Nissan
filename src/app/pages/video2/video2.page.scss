@@ -93,9 +93,14 @@
       margin: auto;
     }
   }
-  [dir='rtl']{
-    .custom-button{
-      right: initial !important;
+  .custom-button{
+    position: fixed;
+    bottom: -5px;
+    border-radius: 0;
+    &.align-left {
       left: 0;
     }
-  }
+    &.align-right {
+      right: 0;
+    }
+}

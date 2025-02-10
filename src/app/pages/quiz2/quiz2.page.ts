@@ -16,15 +16,13 @@ export class Quiz2Page implements OnInit {
   selectedLanguage = localStorage.getItem('selectedLanguage');
   Next:any;
   Submit:any;
-  Correct:any;
-  Wrong:any;
-  WrongAttemptCounter=0;
-  Disable:any;
+  Direction:any;
   arabicQuestion = 'ما هو أول مؤشر يمكن أن تلاحظه لتمييز بين قطع الغيار الأصلية من المزيفة؟';
   arabicChoices = ['ملصق تعريف القطعة','الجودة','التغليف','لا شيء مما سبق'];
-  englishQuestion = 'The 4 most important reasons to always use Nissane genuine parts are Safety, Quality, Longevity, and ______ ?:';
+  englishQuestion = 'The 4 most important reasons to always use Nissane Genuine parts are Safety, Quality, Longevity, and ______ ?:';
   englishChoices = ['Price', 'Reliability', 'Packaging', 'Look & Feel']
-
+  hasSubmitted:boolean=false;
+  
   choices =
   [
     {text:'',value:'1'},
@@ -40,7 +38,6 @@ export class Quiz2Page implements OnInit {
   }
 
   selectedAnswer: string | null = null;
-  feedback: string | null = null;
   isCorrect = false;
 
   constructor(private router:Router) { }
@@ -49,14 +46,12 @@ export class Quiz2Page implements OnInit {
     this.AssignText();
     if(this.selectedLanguage==='ar'){
       this.Next = 'التالي';
-      this.Submit = 'تقديم';
-      this.Correct = '🎉 !صحيح';
-      this.Wrong = '!إجابة خاطئة. حاول مرة أخرى'
+      this.Submit = 'تصحيح';
+      this.Direction='rtl';
     }else{
       this.Next = 'Next';
-      this.Submit = 'Submit';
-      this.Correct = 'Correct! 🎉';
-      this.Wrong = 'Wrong answer. Try again!';
+      this.Submit = 'Evaluate';
+      this.Direction='ltr';
     }
   }
 
@@ -79,18 +74,11 @@ export class Quiz2Page implements OnInit {
       console.error('Error saving answer:', err);
     });
     if (this.selectedAnswer === this.question.correctAnswer) {
-      this.feedback = this.Correct;
       this.isCorrect = true;
     } else {
-      this.feedback = this.Wrong;
       this.isCorrect = false;
-      this.WrongAttemptCounter++;
-      if(this.WrongAttemptCounter>=2){
-        this.Disable=true;
-        this.router.navigate(['/retry']);
-        return;
-      }
     }
+    this.hasSubmitted = true;
   }
 
   goToNextPage() {

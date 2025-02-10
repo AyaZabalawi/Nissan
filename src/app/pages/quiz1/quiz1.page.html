@@ -1,21 +1,37 @@
-<ion-content [fullscreen]="true" class="ion-padding quiz-page">
+<ion-content [fullscreen]="true" class="ion-padding quiz-page" [dir]="Direction">
   <div class="overlay"></div>
   <div class="container">
     <img class="logo" src="assets/images/nisan-logo-white.svg" alt="">
     <div class="content">
       <h1>{{question.text}}</h1>
       <ion-list>
-        <ion-radio-group [(ngModel)]="selectedAnswer">
-          <!-- need to add 'correct' or 'incorrect' class name based on the answers -->
-          <ion-item *ngFor="let choice of question.choices">
+        <ion-radio-group [(ngModel)]="selectedAnswer" (ionChange)="hasSubmitted=false">
+          <ion-item *ngFor="let choice of question.choices"
+                    [ngClass]="{
+                      'correct': hasSubmitted && isCorrect && selectedAnswer === choice.value,
+                      'incorrect': hasSubmitted && !isCorrect && selectedAnswer === choice.value
+                    }">
             <ion-label>{{choice.text}}</ion-label>
-            <ion-radio slot="start" [id]="" [value]="choice.value"></ion-radio>
+            <ion-radio slot="start" [value]="choice.value"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
-      <!-- <p *ngIf="feedback" [ngClass]="{'correct':isCorrect,'incorrect':!isCorrect}">{{feedback}}</p> -->
-      <ion-button expand="full" class="custom-button" *ngIf="!isCorrect&&!Disable" (click)="submitAnswer()" [disabled]="!selectedAnswer">{{Submit}}</ion-button>
-      <ion-button expand="full" class="custom-button secondary" *ngIf="isCorrect&&!Disable" (click)="goToNextPage()">{{Next}}</ion-button>
+      <ion-button 
+        expand="full" 
+        class="custom-button" 
+        *ngIf="!isCorrect" 
+        (click)="submitAnswer()" 
+        [disabled]="!selectedAnswer">
+        {{Submit}}
+      </ion-button>
+      <ion-button 
+        expand="full" 
+        class="custom-button secondary" 
+        *ngIf="isCorrect" 
+        [ngClass]="{ 'align-left': Direction === 'rtl', 'align-right': Direction === 'ltr' }"
+        (click)="goToNextPage()">
+        {{Next}}
+      </ion-button>
     </div>
-    </div>
+  </div>
 </ion-content>

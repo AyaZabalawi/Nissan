@@ -1,24 +1,17 @@
-<ion-content [fullscreen]="true" class="ion-padding video-page">
+<ion-content [fullscreen]="true" class="ion-padding video-page" [dir]="Direction">
   <div class="overlay"></div>
   <div class="container">
     <img class="logo" src="assets/images/nisan-logo-white.svg" alt="">
     <div class="content">
-      <h1>Customer Safety</h1>
+      <h1>{{VideoHeading}}</h1>
       <div class="video-container">
         <video #videoPlayer muted controls class="video-player">
           <source [src]="videoSource" type="video/mp4">
         Your browser does not support the video tag.
         </video>
-        <button></button>
+        <!-- <button *ngIf="!isVideoPlaying" (click)="playVideo()"></button> -->
       </div>
-      <ion-button expand="full" class="custom-button" (click)="goToNextPage()">{{Next}}</ion-button>
+      <ion-button expand="full" class="custom-button" [ngClass]="{ 'align-left': Direction === 'rtl', 'align-right': Direction === 'ltr' }" (click)="goToNextPage()">{{Next}}</ion-button>
     </div>
   </div>
-
-  <!-- <div class="overlay">
-    <div class="container">
-      <video #videoPlayer controls [src]="videoSource" class="video-player"></video>
-      <ion-button expand="full" class="custom-button" (click)="goToNextPage()">Next</ion-button>
-    </div>
-  </div> -->
 </ion-content>

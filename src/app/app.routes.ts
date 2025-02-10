@@ -37,9 +37,5 @@ export const routes: Routes = [
   {
     path: 'final',
     loadComponent: () => import('./pages/final/final.page').then( m => m.FinalPage)
-  },
-  {
-    path: 'retry',
-    loadComponent: () => import('./pages/retry/retry.page').then( m => m.RetryPage)
-  },
+  }
 ];

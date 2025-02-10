@@ -15,15 +15,19 @@ export class FinalPage implements OnInit {
   selectedLanguage:any;
   Heading:any;
   BodyText:any;
+  BodyText2:any;
   ThankYou:any;
+  Direction:any;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
     this.selectedLanguage = localStorage.getItem('selectedLanguage');
-    this.Heading = this.selectedLanguage==='en' ? 'Congratulations!' : '!مبروك';
-    this.BodyText = this.selectedLanguage==='en' ? 'You have successfully completed the quiz. Please proceed to the next room.' : 'لقد أكملت الاختبار بنجاح. يُرجى التوجه إلى الغرفة التالية';
+    this.Heading = this.selectedLanguage==='en' ? 'Congratulations!' : 'مبروك !';
+    this.BodyText = this.selectedLanguage==='en' ? 'You have successfully completed the quiz.' : 'لقد أكملت الاختبار بنجاح.';
+    this.BodyText2 = this.selectedLanguage==='en'?'Please proceed to the next room.':'يُرجى التوجه إلى الغرفة التالية'
     this.ThankYou = this.selectedLanguage==='en' ? 'Thank You!' : '!شكراً لك';
+    this.Direction = this.selectedLanguage==='en' ? 'ltr':'rtl';
   }
 
   goToWelcome(){

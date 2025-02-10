@@ -13,8 +13,11 @@ import { Router } from '@angular/router';
 })
 export class Video1Page implements OnInit {
   @ViewChild('videoPlayer',{static:false}) videoElement!:ElementRef<HTMLVideoElement>;
-  videoSource: string = '';
+  videoSource: string = 'سلامة السيارة';
   Next:any;
+  VideoHeading:any;
+  isVideoPlaying:boolean=false;
+  Direction:any;
 
   constructor(private router: Router) { }
 
@@ -23,9 +26,21 @@ export class Video1Page implements OnInit {
     if (selectedLanguage === 'ar') {
       this.videoSource = 'assets/videos/ar1.mp4'; 
       this.Next = 'التالي';
+      this.VideoHeading = 'سلامة السيارة';
+      this.Direction='rtl';
     } else {
       this.videoSource = 'assets/videos/en1.mp4'; 
       this.Next = 'Next';
+      this.VideoHeading = 'Customer Safety';
+      this.Direction='ltr';
+    }
+  }
+
+  playVideo(){
+    const video = document.querySelector('video');
+    if(video){
+      video.play();
+      this.isVideoPlaying=true;
     }
   }
 

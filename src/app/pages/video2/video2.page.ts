@@ -15,6 +15,10 @@ export class Video2Page implements OnInit {
   @ViewChild('videoPlayer',{static:false}) videoElement!:ElementRef<HTMLVideoElement>;
   videoSource: string = '';
   Next:any;
+  VideoHeading:any;
+  isVideoPlaying:boolean=false;
+  Direction:any;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -22,9 +26,21 @@ export class Video2Page implements OnInit {
     if (selectedLanguage === 'ar') {
       this.videoSource = 'assets/videos/ar1.mp4'; 
       this.Next = 'التالي';
+      this.VideoHeading = 'اكتشاف قطع الغيار المزيفة';
+      this.Direction='rtl';
     } else {
       this.videoSource = 'assets/videos/en1.mp4'; 
       this.Next = 'Next';
+      this.VideoHeading = 'Customer Safety';
+      this.Direction='ltr';
+    }
+  }
+
+  playVideo(){
+    const video = document.querySelector('video');
+    if(video){
+      video.play();
+      this.isVideoPlaying=true;
     }
   }
 

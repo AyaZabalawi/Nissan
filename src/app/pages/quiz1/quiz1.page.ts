@@ -16,15 +16,13 @@ export class Quiz1Page implements OnInit {
   selectedLanguage = localStorage.getItem('selectedLanguage');
   Next:any;
   Submit:any;
-  Correct:any;
-  Wrong:any;
-  WrongAttemptCounter=0;
-  Disable:any;
+  Direction:any;
   arabicQuestion = 'ما هو الجزء الذي يُعتبر قلب السيارة؟';
   arabicChoices = ['المحرك','شمعة الاحتراق','مضخة الوقود','وحدة التحكم'];
   englishQuestion = 'Fake brake pads compromise:';
   englishChoices = ['Ability to slow down', 'Ability to stop in time', 'Both', 'None of the above']
-  
+  hasSubmitted:boolean=false;
+
   choices = 
   [
     {text:'',value:'1'},
@@ -40,7 +38,6 @@ export class Quiz1Page implements OnInit {
   }
 
   selectedAnswer: string | null = null;
-  feedback: string | null = null;
   isCorrect = false;
 
   constructor(private router: Router) { }
@@ -49,14 +46,12 @@ export class Quiz1Page implements OnInit {
     this.AssignText();
     if(this.selectedLanguage==='ar'){
       this.Next = 'التالي';
-      this.Submit = 'تقديم';
-      this.Correct = '🎉 !صحيح';
-      this.Wrong = '!إجابة خاطئة. حاول مرة أخرى'
+      this.Submit = 'تصحيح';
+      this.Direction='rtl';
     }else{
       this.Next = 'Next';
-      this.Submit = 'Submit';
-      this.Correct = 'Correct! 🎉';
-      this.Wrong = 'Wrong answer. Try again!';
+      this.Submit = 'Evaluate';
+      this.Direction='ltr';
     }
   }
 
@@ -68,6 +63,7 @@ export class Quiz1Page implements OnInit {
 
   submitAnswer() {
     const answer = {questionText:this.question.text, selectedAnswer:this.selectedAnswer};
+    
     Filesystem.appendFile({
       path: 'quiz_responses.txt',
       data: JSON.stringify(answer) + '\n',
@@ -78,20 +74,12 @@ export class Quiz1Page implements OnInit {
     }).catch(err => {
       console.error('Error saving answer:', err);
     });
-  
     if (this.selectedAnswer === this.question.correctAnswer) {
-      this.feedback = this.Correct;
       this.isCorrect = true;
     } else {
-      this.feedback = this.Wrong;
       this.isCorrect = false;
-      this.WrongAttemptCounter++;
-      if(this.WrongAttemptCounter>=2){
-        this.Disable=true;
-        this.router.navigate(['/retry']);
-        return;
-      }
     }
+    this.hasSubmitted = true;
   }
 
   goToNextPage() {

@@ -63,8 +63,13 @@ ion-content {
       &.secondary {
         position: fixed;
         bottom: -5px;
-        right: 0;
         border-radius: 0;
+        &.align-left {
+          left: 0;
+        }
+        &.align-right {
+          right: 0;
+        }
       }
     }
     p {
